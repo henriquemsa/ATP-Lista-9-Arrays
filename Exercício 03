@@ -1,0 +1,131 @@
+/*
+ * Numa fábrica de parafusos recolheu-se uma amostra de 1000 parafusos para medição e pesagem. Escreva um algoritmo capaz de:
+ * –  ler os valores do peso e do comprimento de cada parafuso da amostra,
+ * –  calcule o peso médio e o comprimento médio dos parafusos dessa amostra,
+ * – calcule a percentagem de parafusos com peso superior à média da amostra,
+ * – calcule a diferença entre o parafuso mais comprido e o mais curto.
+ */
+
+using System;
+
+namespace Exercicio3
+{
+    class Program
+    {    
+        // Método para calcular e retornar o comprimento médio dos parafusos da amostra
+        static double ComprimentoMedio(double[] comprimento)
+        {
+            double media = 0.0;
+
+            for (int i = 0; i < comprimento.Length; i++)
+            {
+                media += comprimento[i];
+            }
+
+            media /= comprimento.Length;
+
+            return media;
+        }
+
+        // Método para calcular e retornar o peso médio dos parafusos da amostra
+        static double PesoMedio(double[] peso)
+        {
+            double media = 0.0;
+
+            for (int i = 0; i < peso.Length; i++)
+            {
+                media += peso[i];
+            }
+
+            media /= peso.Length;
+
+            return media;
+        }
+
+        // Método para calcular e retornar a percentagem dos parafusos com peso superior à média
+        static double Percentagem(double[] peso, double mediaPeso)
+        {
+            double percentagem = 0.0;
+
+            for (int i = 0; i < peso.Length; i++)
+            {
+                if (peso[i] > mediaPeso)
+                {
+                    percentagem++;
+                }
+            }
+
+            percentagem = (percentagem * 100) / 5;
+
+            return percentagem;
+        }
+
+        // Método para calcular a diferença entre o parafuso mais comprido e o mais curto
+        static double Diferenca(double[] comprimento)
+        {
+            double maior = comprimento[0], menor = comprimento[0], diferenca;
+
+            for (int i = 1; i < comprimento.Length; i++)
+            {
+                if(comprimento[i] > maior)
+                {
+                    maior = comprimento[i];
+                }
+
+                if(comprimento[i] < menor)
+                {
+                    menor = comprimento[i];
+                }
+            }
+
+            diferenca = maior - menor;
+
+            return diferenca;
+        }
+
+
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            double[] peso = new double[5];
+            double[] comprimento = new double[5];
+            double pesoMedio, comprimentoMedio, percentagem, diferenca;
+
+            // Preenchendo os vetores
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.Write(" {0}ª Parafuso", (i + 1));
+                Console.WriteLine();
+                Console.Write(" Peso: ");
+                peso[i] = double.Parse(Console.ReadLine());
+                Console.Write(" Comprimento: ");
+                comprimento[i] = double.Parse(Console.ReadLine());
+            }
+
+            // Chamando método 'PesoMedio'
+            pesoMedio = PesoMedio(peso);
+
+            // Chamando método 'ComprimentoMedio'
+            comprimentoMedio = ComprimentoMedio(comprimento);
+
+            // Chamando método 'Percentagem'
+            percentagem = Percentagem(peso, pesoMedio);
+
+            // Chamando método 'Diferenca'
+            diferenca = Diferenca(comprimento);
+
+            // Imprimindo resultados
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" O peso médio dos parafusos da amostra é: {0} g", pesoMedio);
+            Console.WriteLine(" O comprimento médio dos parafusos da amostra é: {0} cm", comprimentoMedio);
+            Console.WriteLine(" A percentagem dos parafusos com peso superior à média é: {0}%", percentagem);
+            Console.WriteLine(" A diferença do tamanho entre o maior e o menor parafuso é: {0} cm", diferenca);
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();            
+        }
+    }
+}
