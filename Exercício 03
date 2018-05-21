@@ -55,7 +55,7 @@ namespace Exercicio3
                 }
             }
 
-            percentagem = (percentagem * 100) / 5;
+            percentagem = (percentagem * 100) / 1000;
 
             return percentagem;
         }
@@ -87,12 +87,12 @@ namespace Exercicio3
         static void Main(string[] args)
         {
             // Declaração de variáveis
-            double[] peso = new double[5];
-            double[] comprimento = new double[5];
+            double[] peso = new double[1000];
+            double[] comprimento = new double[1000];
             double pesoMedio, comprimentoMedio, percentagem, diferenca;
 
             // Preenchendo os vetores
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 Console.Clear();
                 Console.WriteLine();
