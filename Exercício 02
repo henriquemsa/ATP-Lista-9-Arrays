@@ -1,0 +1,85 @@
+/*
+ * Faça um programa para ler um número inteiro N e N elementos de um array. 
+ * Em seguida, faça um método para calcular e mostrar o número de elementos pares 
+ * e o outro método para calcular e imprimir a quantidade de números divisíveis por três.
+ */
+
+using System;
+
+namespace Exercicio2
+{
+    class Program
+    {
+
+        // Método que retorna o número de elementos pares presentes em um vetor
+        static int ElementosPares(int[] vet)
+        {
+            int pares = 0;
+
+            // Percorre o vetor e testa se o elemento da posição 'i' é par
+            for (int i = 0; i < vet.Length; i++)
+            {
+                if (vet[i] % 2 == 0)
+                {
+                    pares++;
+                }
+            }
+
+            return pares;
+        }
+
+        // Método que retorna a quantidade de números divisíveis por três em um vetor
+        static int ElementosDivisiveis(int[] vet)
+        {
+            int div3 = 0;
+
+            // Percorre o vetor e testa se o elemento da posição 'i' é divisível por 3
+            for (int i = 0; i < vet.Length; i++)
+            {
+                if (vet[i] % 3 == 0)
+                {
+                    div3++;
+                }
+            }
+
+            return div3;
+        }
+
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            int n, pares, div3;
+
+            Console.WriteLine();
+            Console.Write(" Entre com um número inteiro para determinar o tamanho do vetor: ");
+            n = int.Parse(Console.ReadLine());
+
+            // Criando vetor 'vet' de tamanho 'n'
+            int[] vet = new int[n];
+
+            // Preenchendo 'vet'
+            for (int i = 0; i < vet.Length; i++)
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.Write(" Entre com o valor a ser inserido na {0}ª posição do vetor: ", (i + 1));
+                vet[i] = int.Parse(Console.ReadLine()); 
+            }
+
+            // Chamando o método 'ElementosPares'
+            pares = ElementosPares(vet);
+
+            // Chamando o método 'ElementosDivisiveis'
+            div3 = ElementosDivisiveis(vet);
+
+            // Imprimindo resultados
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" O número de elementos pares contidos no vetor é: " + pares);
+            Console.WriteLine(" O número de elementos divisíveis por 3 contidos no vetor é: " + div3);
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();
+        }
+    }
+}
